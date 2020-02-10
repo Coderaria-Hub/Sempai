@@ -3,10 +3,9 @@ require('./structures/Guild');
 
 const Sempai = require('./structures/Sempai');
 const client = new Sempai({
-    messageCacheMaxSize: 50,
+    messageCacheMaxSize: 100,
     messageCacheLifetime: 300,
-    messageSweepInterval: 900,
-    disableEveryone: true,
+    messageSweepInterval: 500,
     disabledEvents: ['TYPING_START'],
     partials: ['MESSAGE', 'REACTION']
 });
