@@ -35,7 +35,7 @@ module.exports = {
             Last marriage was executed at ${moment(lastD).format('hh:mm A [on] dddd [in] MMMM, YYYY')}
             The lucky ones were ${client.users.get(lastMarry1).tag} & ${client.users.get(lastMarry2).tag}
         `)
-          .addField('Server Marriages', sCount, true)
+          .addField('Server Marriages', sCount || 'No Marriages Detected', true)
           .addField('Global Marriages', gCount, true);
 
         client.delete(channel, embed, 25000);
