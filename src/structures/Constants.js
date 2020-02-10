@@ -1,6 +1,6 @@
 module.exports = {
     MSGS: {
-        usage: '**Command** {}\n**Aliases** {}\n**Usage** {}\n**Description** {}\n**Access** {}',
+        usage: '**Category** {}\n**Command** {}\n**Aliases** {}\n**Usage** {}\n**Description** {}\n**Access** {}',
         onCooldown: '{}, you\'re in cooldown, try \`{}\` again in {} seconds!',
         guildOnly: '{}, the command \`{}\` is only usable in guilds!',
         helperOnly: '{}, the command \`{}\` is only usable by helpers!',

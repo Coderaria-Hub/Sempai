@@ -16,13 +16,15 @@ const {
 
 module.exports = {
     /* Command Run Settings. */
+    category: 'Developer',
     name: 'evaluate',
     aliases: ['eval', 'ev'],
-    usage: 'sm.evaluate [Code To Run]',
+    usage: 'sp.evaluate [Code To Run]',
     description: 'Runs a code by command inside a Discord chat.',
     access: 'Developers',
 
     /* Other Command Settings */
+    disabled: true,
     deleteInvoke: true,
     args: true,
     guildBound: true,

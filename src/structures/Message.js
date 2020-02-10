@@ -78,6 +78,10 @@ module.exports = Structures.extend('Message', Message => {
         }
 
         async commandCheck(args, cmd, author, guild) {
+            if (cmd.disabled) {
+                return this.client.delete(this.channel, new this.client.Embed().error('Command Disability', `The command \`${this.client.captialise(cmd.name)}\` is currently disabled!`), 25000);
+            }
+
             if (cmd.guildBound && !this.guild && this.channel.type !== 'text') {
                 return this.client.delete(this.channel, new this.client.Embed().error('Invalid Channel', this.client.format(guildOnly, author.tag, cmd.name)), 25000);
             }
@@ -107,7 +111,7 @@ module.exports = Structures.extend('Message', Message => {
             }
 
             if (cmd.args && !args.length) {
-                return this.client.delete(this.channel, new this.client.Embed().error('Invalid Usage', this.client.format(usage, this.client.captialise(cmd.name), cmd.aliases.join(', '), cmd.usage, cmd.description, cmd.access)), 25000);
+                return this.client.delete(this.channel, new this.client.Embed().error('Invalid Usage', this.client.format(usage, cmd.category, this.client.captialise(cmd.name), cmd.aliases.join(', '), cmd.usage, cmd.description, cmd.access)), 25000);
             }
         }
 
