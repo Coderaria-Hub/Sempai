@@ -18,13 +18,13 @@ const moment = require('moment');
 const Embed = require('./Embeds');
 const {
     token
-} = require('../../config.json');
+} = require('../config.json');
 
 class BotClient extends Client {
     constructor(options = {}) {
         super(options);
         this.token = token;
-        this.prefix = 's.';
+        this.prefix = 'sp.';
         this.devs = ['671374842951630858', '443097868694454282', '380967240515977218', '336608827484930050'];
         this.commands = new Collection();
         this.cmdDir = '../modules/commands';
@@ -41,7 +41,7 @@ class BotClient extends Client {
      * @param {String} msg - The message to log. 
     */
     async log(msg) {
-        return console.log(`[SEMPAI - ALERT | LOG] (${moment(Date.now()).format('hh:mm A, DDDD')}): ${msg}`);
+        return console.log(`[SEMPAI - ALERT | LOG] (${moment(Date.now()).format('hh:mm A, dddd')}): ${msg}`);
     }
 
     /* Logs the bot out from Discord. */
@@ -54,14 +54,14 @@ class BotClient extends Client {
      * @param {String} msg - The message to log.
     */
     async info(msg) {
-        return console.log(`[SEMPAI - ALERT | INFO] (${moment(Date.now()).format('hh:mm A, DDDD')}): ${msg}`);
+        return console.log(`[SEMPAI - ALERT | INFO] (${moment(Date.now()).format('hh:mm A, dddd')}): ${msg}`);
     }
 
     /** Logs a waning related message to console.
      * @param {String} msg - The message to log.
     */
     async warn(msg) {
-        return console.log(`[SEMPAI - ALERT | WARN] (${moment(Date.now()).format('hh:mm A, DDDD')}): ${msg}`);
+        return console.log(`[SEMPAI - ALERT | WARN] (${moment(Date.now()).format('hh:mm A, dddd')}): ${msg}`);
     }
 
     /** Logs a error related message to console.
@@ -69,7 +69,7 @@ class BotClient extends Client {
      * @param {String} msg - The message to log.
     */
     async error(name, msg) {
-        return console.log(`[SEMPAI - ERROR | ${name}] (${moment(Date.now()).format('hh:mm A, DDDD')}): ${msg}`);
+        return console.log(`[SEMPAI - ERROR | ${name}] (${moment(Date.now()).format('hh:mm A, dddd')}): ${msg}`);
     }
 
     /* Loads all events from the events directory/folder. */
