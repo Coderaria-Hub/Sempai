@@ -12,7 +12,7 @@ module.exports = Structures.extend('Guild', Guild => {
         }
 
         async isStaff(member) {
-            member = await this.client.resolve('member', member.id, this);
+            member = await this.client.fetch('member', member.id, this);
             const roles = {};
 
             if (member) {

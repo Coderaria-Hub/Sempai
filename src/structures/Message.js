@@ -106,8 +106,8 @@ module.exports = Structures.extend('Message', Message => {
                 }
             }
 
-            if (cmd.args && !cmd.length) {
-                return this.client.delete(this.channel, new this.client.Embed().error('Invalid Usage', client.format(usage, this.client.captialise(cmd.name), cmd.aliases.join(', '), cmd.usage, cmd.description, cmd.access)), 25000);
+            if (cmd.args && !args.length) {
+                return this.client.delete(this.channel, new this.client.Embed().error('Invalid Usage', this.client.format(usage, this.client.captialise(cmd.name), cmd.aliases.join(', '), cmd.usage, cmd.description, cmd.access)), 25000);
             }
         }
 
