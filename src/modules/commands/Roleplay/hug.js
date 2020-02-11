@@ -21,9 +21,9 @@ module.exports = {
     adminBound: false,
     devBound: false,
 
-    execute(message, args) {
+    async execute(message, args) {
         let { client, author, channel, guild } = message;
-        let user = client.fetch('member', args.join(' '), guild);
+        let user = await client.fetch('member', args.join(' '), guild);
         let gifs = [
             'https://media.giphy.com/media/od5H3PmEG5EVq/giphy.gif',
             'https://media.giphy.com/media/cotftb3AXgfV6/giphy.gif',
@@ -38,15 +38,10 @@ module.exports = {
 
         const embed = new client.Embed();
 
+        if (user.id === client.user.id) return client.delete(channel, new client.Embed().error('Invalid Argument', 'You can\'t hug me ~:sob:'), 25000);
+        if (user.id === author.id) return client.delete(channel, new client.Embed().error('Invalid Argument', 'You can\'t hug yourself ~:sob:'), 25000);
+
         try {
-            if (user.id === client.user.id) return embed.error('Error Occured', stripIndents`
-                You can't hug me ~:sob:
-            `);
-
-            if (user.id === author.id) return embed.error('Error Occured', stripIndents`
-                You can't hug yourself ~:sob:
-            `);
-
             embed.main('Hugged Member', stripIndents`
                 ${message.member.displayName} hugged ${user.displayName} ~:heart:
             `)
@@ -62,6 +57,6 @@ module.exports = {
             `);
         }
 
-        client.delete(channel, embed, 25000);
+        channel.send(embed);
     }
 }
