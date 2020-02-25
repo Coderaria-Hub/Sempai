@@ -18,7 +18,7 @@ const moment = require('moment');
 const Embed = require('./Embeds');
 const {
     token
-} = require('../config.json');
+} = require('../../config.json');
 
 class BotClient extends Client {
     constructor(options = {}) {
@@ -211,7 +211,7 @@ class BotClient extends Client {
         switch (type.toLowerCase()) {
             case 'user':
                 if (value instanceof User) return value;
-                let fetchUser = this.users.find(
+                let fetchUser = this.users.cache.find(
                     u =>
                          u.username.toLowerCase() === value ||
                          u.tag.toLowerCase() === value ||
@@ -225,7 +225,7 @@ class BotClient extends Client {
             case 'member':
                 if (!(guild instanceof Guild)) this.error('GUILD PARAMETER', 'The guild parameter wasn\'t passed!');
                 if (value instanceof GuildMember) return value;
-                const fetchMember = guild.members.find(
+                const fetchMember = guild.members.cache.find(
                     m => 
                          m.user.username.toLowerCase() === value ||
                          m.user.tag.toLowerCase() === value ||
@@ -236,7 +236,7 @@ class BotClient extends Client {
             case 'role':
                 if (!(guild instanceof Guild)) this.error('GUILD PARAMETER', 'The guild parameter wasn\'t passed!');
                 if (value instanceof Role) return value;
-                const fetchRole = guild.roles.find(
+                const fetchRole = guild.roles.cache.find(
                     r => 
                          r.name.toLowerCase() === value ||
                          r.id === value.replace(/[\\<>@&]/g, '')
@@ -246,7 +246,7 @@ class BotClient extends Client {
             case 'channel':
                 if (!(guild instanceof Guild)) this.error('GUILD PARAMETER', 'The guild parameter wasn\'t passed!');
                 if (value instanceof Channel) return value;
-                const fetchChannel = guild.channels.find(
+                const fetchChannel = guild.channels.cache.find(
                     c => 
                          c.name.toLowerCase() === value ||
                          c.id === value.replace(/[\\<>#]/g, '')
