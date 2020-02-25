@@ -5,8 +5,6 @@
 
 # Node.JS/Discord.JS files
 config.json
-node_modules
-node_modules/
 
 # User-specific files
 *.rsuser
